@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Container, Typography, Button } from "@mui/material";
+import React from "react";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import VoiceChat from "./pages/VoiceChat";
+import VideoCreator from "./pages/VideoCreator";
+import Header from "./components/nav/Header";
+import "./App.css";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Header />}>
+      <Route index element={<Home />} />
+      <Route path="voice-chat" element={<VoiceChat />} />
+      <Route path="video-creator" element={<VideoCreator />} />
+    </Route>
+  )
+);
 
 const App: React.FC = () => {
-    const [message, setMessage] = useState<string>("");
-
-    useEffect(() => {
-        axios.get("/api/")
-            .then(response => setMessage(response.data.message))
-            .catch(error => console.error("Error fetching data", error));
-    }, []);
-
-    return (
-        <Container>
-            <Typography variant="h3" gutterBottom>
-                FastAPI + React + Vite + MUI (TypeScript)
-            </Typography>
-            <Typography variant="body1">
-                {message || "Loading..."}
-            </Typography>
-            <Button variant="contained" color="primary" style={{ marginTop: '20px' }}>
-                Material UI Button
-            </Button>
-        </Container>
-    );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
