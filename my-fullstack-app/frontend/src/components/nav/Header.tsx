@@ -71,7 +71,7 @@ const Header: React.FC = () => {
           </Box>
         </Toolbar>
       </AppBar>
-      <Toolbar /> {/* Spacer for fixed AppBar */}
+      {/*<Toolbar /> /!* Commenting this out, Spacer for fixed AppBar *!/*/}
       <Outlet />
     </>
   );
