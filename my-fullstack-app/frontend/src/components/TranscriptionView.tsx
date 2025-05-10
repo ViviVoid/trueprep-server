@@ -21,8 +21,8 @@ export default function TranscriptionView() {
       {/* Scrollable content */}
       <div
         ref={containerRef}
-        className="h-full flex flex-col gap-2 overflow-y-auto px-4 py-8"
-        style={{ height: "calc(100% - 32px)" }} // Adjusted height to account for gradient masks
+        className="h-full flex flex-col gap-2 overflow-y-auto overflow-x-auto px-4 py-8"
+        style={{ height: "calc(100% - 32px)", width: "100%" }} // Adjusted height to account for gradient masks
       >
         {combinedTranscriptions.map((segment) => (
           <div
